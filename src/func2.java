@@ -1,5 +1,7 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.lang.Math;
+
 public class func2 {
     public static void main(String[] args) {
         printResults(0, 0);
@@ -8,27 +10,40 @@ public class func2 {
         printResults(1, 1);
         printResults(2, 1);
         printResults(1, 2);
-        printResults(2, -10);
-        printResults(20, 20);
-        printResults(21, 21);
+        printResults(2, -9);
+        printResults(20, -10);
+        printResults(21, 7);
         printResults(1, 10);
         printResults(-1, 10);
         printResults(0, Double.MAX_VALUE);
         printResults(1, Double.MAX_VALUE);
         printResults(1, Double.NaN);
+
+
     }
 
-    public static double axx(double a, double x) {
-        if (a < 0 || a > 20) {
-            throw new IllegalArgumentException("param a = " + a);
+    public static double axx(double t, double l) {
+        if (l % 2 == 0 ) {
+            return (1 /t) * l;
+        }else if(l % 2 == 1){
+            return l / Math.sqrt(t);
         }
-        return a * x * x;
+        throw new IllegalArgumentException("param l = " + l);
     }
 
-    static void printResults(double a, double x) {
-        System.out.print("a:" + a + " x:" + x + " result:");
+    static void printResults(double t, double l) {
+        System.out.print("t:" + t + " l:" + l + " result:");
         try {
-            System.out.println(axx(a, x));
+            if(t <= 0) {
+                throw new IllegalArgumentException("param t = " + t);
+            }else if(l < 0){
+                throw new IllegalArgumentException("param l = " + l);
+            }
+            double result = 0;
+            for (int i = 0; i < t ; i++) {
+                result += axx(t, l);
+            }
+            System.out.println(result);
         } catch (IllegalArgumentException e) {
             System.out.println("EXCEPTION! " + e.getMessage());
         }
