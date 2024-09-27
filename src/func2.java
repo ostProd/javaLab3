@@ -22,7 +22,7 @@ public class func2 {
 
     }
 
-    public static double axx(double t, double l) {
+    public static double executionEq(double t, double l) {
         if (l % 2 == 0 ) {
             return (1 /t) * l;
         }else if(l % 2 == 1){
@@ -41,7 +41,7 @@ public class func2 {
             }
             double result = 0;
             for (int i = 0; i < t ; i++) {
-                result += axx(t, l);
+                result += executionEq(t, l);
             }
             System.out.println(result);
         } catch (IllegalArgumentException e) {
